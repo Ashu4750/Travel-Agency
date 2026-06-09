@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency Flight Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+	background-image: url('https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-72292.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            color: #333;
+background-repeat: 2;
+background-size: cover; /* Makes sure the background image covers the entire area */
+        background-position: center; /* Centers the background image */
+        height: 100%; /* Ensures the body takes the full height of the viewport */
+            background-color: #f4f4f4;
+            color: #333;
+
+
+        }
+        header {
+            background: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="date"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function showMessage(event, message) {
+            event.preventDefault(); // Prevent the form from submitting
+            alert(message);
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Travel Agency Flight Booking</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about3.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="review.html">Reviews</a>
+
+
+    </nav>
+</header>
+
+<div class="container" id="home">
+    <h2>Welcome to Our Flight Booking Service</h2>
+    <p>Find and book your flights with ease. Your adventure starts here!</p>
+</div>
+
+<div class="container" id="about">
+    <h2>About Us</h2>
+    <p>We are committed to providing exceptional travel experiences for our customers.</p>
+</div>
+
+<div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="showMessage(event, 'Message Sent! Thank you for contacting us.')">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="4" required></textarea>
+        <input type="submit" value="Send Message">
+    </form>
+</div>
+
+<div class="container" id="booking">
+    <h2>Book Your Flight</h2>
+    <form onsubmit="showMessage(event, 'Flight Booking Submitted! Thank you.');">
+        <input type="text" placeholder="Name" required>
+        <input type="date" placeholder="Return Date (optional)">
+        <select required>
+            <option value="">Number of Passengers</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <input type="submit" value="book now">
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2024 Travel Agency. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

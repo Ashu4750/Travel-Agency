@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Travel Agency</title>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1484821582734-6c6c9f99a672?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dHJhdmVsJTIwYWdlbmN5fGVufDB8fDB8fHww');
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            position: relative; /* Added for positioning */
+            opacity: 0.9;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .services-section {
+            width: 800px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .services-section h2 {
+            margin-top: 0;
+        }
+        .services-section p {
+            margin-bottom: 20px;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+opacity:0.7;
+        }
+        .service {
+            width: 200px;
+            margin: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fff;
+        }
+        .service img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .service h3 {
+            margin-top: 10px;
+        }
+        .service p {
+            margin-bottom: 20px;
+        }
+        .service button {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .service button:hover {
+            background-color: #3e8e41;
+        }
+        .form-container {
+            display: none; /* Hide by default */
+            position: absolute; /* Positioned in relation to the content */
+            top: 50%; /* Centering */
+            left: 50%; /* Centering */
+            transform: translate(-50%, -50%); /* Centering */
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 100; /* Ensure it is above other content */
+	opacity:0.9;
+        }
+        .close-btn {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+            color: #888;
+        }
+        .close-btn:hover {
+            color: #000;
+        }
+    </style>
+    <script>
+        function showForm(service) {
+            const formContainer = document.getElementById('form-container');
+            formContainer.style.display = 'block'; // Show the form
+
+            const serviceName = document.getElementById('service-name');
+            serviceName.innerText = service.name;
+
+            // Clear previous fields
+            const formFields = document.getElementById('form-fields');
+            formFields.innerHTML = ''; // Reset fields
+
+            // Add fields based on the service
+            service.fields.forEach(field => {
+                const fieldContainer = document.createElement('div');
+                fieldContainer.innerHTML = `
+                    <label for="${field.id}">${field.label}:</label><br>
+                    <input type="${field.type}" id="${field.id}" name="${field.name}" required><br><br>
+                `;
+                formFields.appendChild(fieldContainer);
+            });
+        }
+
+        function closeForm() {
+            const formContainer = document.getElementById('form-container');
+            formContainer.style.display = 'none'; // Hide the form
+        }
+
+        function learnMore() {
+            alert("Visa Assistance: We help you with visa applications, including necessary documentation and guidance for a smooth process.");
+        }
+
+        // Service definitions with dynamic fields
+        const services = {
+            flight: {
+                name: 'Flight Booking',
+                fields: [
+                    { label: 'Departure City', id: 'departure-city', name: 'departureCity', type: 'text' },
+                    { label: 'Arrival City', id: 'arrival-city', name: 'arrivalCity', type: 'text' },
+                    { label: 'Travel Date', id: 'travel-date', name: 'travelDate', type: 'date' },
+                ]
+            },
+            hotel: {
+                name: 'Hotel Booking',
+                fields: [
+                    { label: 'Check-in Date', id: 'checkin-date', name: 'checkinDate', type: 'date' },
+                    { label: 'Check-out Date', id: 'checkout-date', name: 'checkoutDate', type: 'date' },
+                    { label: 'Number of Guests', id: 'number-guests', name: 'numberGuests', type: 'number' },
+                ]
+            },
+            package: {
+                name: 'Package Tours',
+                fields: [
+                    { label: 'Tour Date', id: 'tour-date', name: 'tourDate', type: 'date' },
+                    { label: 'Number of Participants', id: 'number-participants', name: 'numberParticipants', type: 'number' },
+                ]
+            },
+            bus: {
+                name: 'Bus Booking',
+                fields: [
+                    { label: 'Departure Location', id: 'departure-location', name: 'departureLocation', type: 'text' },
+                    { label: 'Travel Date', id: 'bus-travel-date', name: 'busTravelDate', type: 'date' },
+                ]
+            },
+            visa: {
+                name: 'Visa Assistance',
+                fields: [] // No fields, handled differently
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>AK Travel Agency</h1>
+    </div>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about3.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="review.html">Reviews</a>
+	<a href="travel.html">Logout</a>
+
+    </div>
+    <div class="content">
+        <h2>Our Services</h2>
+        
+        <!-- Information Form -->
+        <div id="form-container" class="form-container">
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <h3>Book a Service: <span id="service-name"></span></h3>
+            <form>
+                <div id="form-fields"></div> <!-- Dynamic fields will be added here -->
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="services-section">
+            <p>We offer a wide range of travel services to make your trip unforgettable.</p>
+        </div>
+        <div class="services">
+            <div class="service">
+                <img src="https://gizmodo.com/app/uploads/2024/03/324fa973d7a8ff40c8bc51c0c32d5704-1024x577.jpg" alt="Flight Booking">
+                <h3>Flight Booking</h3>
+                <p>Book your flights with us and get the best deals.</p>
+                <button onclick="showForm(services.flight)">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://www.siteminder.com/wp-content/uploads/2023/08/vala-hero.jpg" alt="Hotel Booking">
+                <h3>Hotel Booking</h3>
+                <p>Choose from our wide range of hotels and resorts.</p>
+                <button onclick="showForm(services.hotel)">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://www.shutterstock.com/image-photo/tour-packages-concept-collage-travel-260nw-641820484.jpg" alt="Package Tours">
+                <h3>Package Tours</h3>
+                <p>Explore our pre-designed packages for a hassle-free trip.</p>
+                <button onclick="showForm(services.package)">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://3.imimg.com/data3/BM/TO/MY-11729718/bus-booking-500x500.jpg" alt="Bus Booking">
+                <h3>Bus Booking</h3>
+                <p>We assist with bus applications for a smooth travel experience.</p>
+                <button onclick="showForm(services.bus)">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ_V_-49kFs4vJ0mQ3qqjxoffVQpgLylVElg&s" alt="Visa Assistance">
+                <h3>Visa Assistance</h3>
+                <p>We assist with visa applications for a smooth travel experience.</p>
+                <button onclick="learnMore()">Learn More</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Travel Agency</p>
+    </div>
+</body>
+</html>

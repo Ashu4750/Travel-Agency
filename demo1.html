@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Travel Agency</title>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1484821582734-6c6c9f99a672?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dHJhdmVsJTIwYWdlbmN5fGVufDB8fDB8fHww');
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .services-section {
+            width: 800px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .services-section h2 {
+            margin-top: 0;
+        }
+        .services-section p {
+            margin-bottom: 20px;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .service {
+            width: 200px;
+            margin: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fff;
+        }
+        .service img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .service h3 {
+            margin-top: 10px;
+        }
+        .service p {
+            margin-bottom: 20px;
+        }
+        .service button {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .service button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AK Travel Agency</h1>
+    </div>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="content">
+        <h2>Our Services</h2>
+        <div class="services-section">
+            <p>We offer a wide range of travel services to make your trip unforgettable.</p>
+        </div>
+        <div class="services">
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1519340334198-1119b4f1f3bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc5M3wwfDF8c2VhcmNofDV8fGZsZWN0fGVufDB8fHx8MTYyNjk4Nzg4NA&ixlib=rb-1.2.1&q=80&w=400" alt="Flight Booking">
+                <h3>Flight Booking</h3>
+                <p>Book your flights with us and get the best deals.</p>
+                <button onclick="window.location.href='flight_booking.html'">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc5M3wwfDF8c2VhcmNofDR8fGhvdGVsJTIwYm9va2luZ3xlbnwwfHx8fDE2MjY5ODc4ODQ&ixlib=rb-1.2.1&q=80&w=400" alt="Hotel Booking">
+                <h3>Hotel Booking</h3>
+                <p>Choose from our wide range of hotels and resorts.</p>
+                <button onclick="window.location.href='hotel_booking.html'">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1542199116-8b50a3a3b90c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc5M3wwfDF8c2VhcmNofDJ8fHBhY2thZ2UlMjB0b3Vyc3xlbnwwfHx8fDE2MjY5ODc4ODQ&ixlib=rb-1.2.1&q=80&w=400" alt="Package Tours">
+                <h3>Package Tours</h3>
+                <p>Explore our pre-designed packages for a hassle-free trip.</p>
+                <button onclick="window.location.href='package_tours.html'">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1608301046535-4e84586a8f92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc5M3wwfDF8c2VhcmNofDExfHx2aXNhfGVufDB8fHx8MTYyNjk4Nzg4NQ&ixlib=rb-1.2.1&q=80&w=400" alt="Visa Assistance">
+                <h3>Visa Assistance</h3>
+                <p>We assist with visa applications for a smooth travel experience.</p>
+                <button onclick="window.location.href='visa_assistance.html'">Learn More</button>
+            </div>
+            <div class="service">
+                <img src="https://images.unsplash.com/photo-1602678658827-305207e2b141?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc5M3wwfDF8c2VhcmNofDJ8fHRyYXZlbCUyMGluc3VyYW5jZXxlbnwwfHx8fDE2MjY5ODc4ODQ&ixlib=rb-1.2.1&q=80&w=400" alt="Travel Insurance">
+                <h3>Travel Insurance</h3>
+                <p>Protect yourself and your loved ones with our travel insurance.</p>
+                <button onclick="window.location.href='travel_insurance.html'">Learn More</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Travel Agency</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK Travel Agency</title>
+    <style>
+        /* Apply smooth scroll globally */
+        html {
+            scroll-behavior:smooth;
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1484821582734-6c6c9f99a672?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dHJhdmVsJTIwYWdlbmN5fGVufDB8fDB8fHww');
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        /* Header Style */
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navigation Style */
+        .nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        .nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Content Section Style */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            position: relative;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .services-section {
+            width: 800px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0.7;
+        }
+
+        .service {
+            width: 200px;
+            margin: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .service img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .service h3 {
+            margin-top: 10px;
+        }
+
+        .service p {
+            margin-bottom: 20px;
+        }
+
+        .service button {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .service button:hover {
+            background-color: #3e8e41;
+        }
+
+        /* Form Container Style */
+        .form-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            opacity: 0.9;
+        }
+
+        .close-btn {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+            color: #888;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            opacity: 0.7;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .submitted-message {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0ffe0;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+    <script>
+        function showForm(service) {
+            const formContainer = document.getElementById('form-container');
+            formContainer.style.display = 'block';
+
+            const serviceName = document.getElementById('service-name');
+            serviceName.innerText = service.name;
+
+            const formFields = document.getElementById('form-fields');
+            formFields.innerHTML = ''; 
+
+            service.fields.forEach(field => {
+                const fieldContainer = document.createElement('div');
+                fieldContainer.innerHTML = `
+                    <label for="${field.id}">${field.label}:</label><br>
+                    <input type="${field.type}" id="${field.id}" name="${field.name}" required><br><br>
+                `;
+                formFields.appendChild(fieldContainer);
+            });
+        }
+
+        function closeForm() {
+            const formContainer = document.getElementById('form-container');
+            formContainer.style.display = 'none';
+        }
+
+        function learnMore() {
+            alert("Visa Assistance: We help you with visa applications, including necessary documentation and guidance for a smooth process.");
+        }
+
+        const services = {
+            flight: {
+                name: 'Flight Booking',
+                fields: [
+                    { label: 'Departure City', id: 'departure-city', name: 'departureCity', type: 'text' },
+                    { label: 'Arrival City', id: 'arrival-city', name: 'arrivalCity', type: 'text' },
+                    { label: 'Travel Date', id: 'travel-date', name: 'travelDate', type: 'date' },
+                ]
+            },
+            hotel: {
+                name: 'Hotel Booking',
+                fields: [
+                    { label: 'Check-in Date', id: 'checkin-date', name: 'checkinDate', type: 'date' },
+                    { label: 'Check-out Date', id: 'checkout-date', name: 'checkoutDate', type: 'date' },
+                    { label: 'Number of Guests', id: 'number-guests', name: 'numberGuests', type: 'number' },
+                ]
+            },
+            package: {
+                name: 'Package Tours',
+                fields: [
+                    { label: 'Tour Date', id: 'tour-date', name: 'tourDate', type: 'date' },
+                    { label: 'Number of Participants', id: 'number-participants', name: 'numberParticipants', type: 'number' },
+                ]
+            },
+            bus: {
+                name: 'Bus Booking',
+                fields: [
+                    { label: 'Departure Location', id: 'departure-location', name: 'departureLocation', type: 'text' },
+                    { label: 'Travel Date', id: 'bus-travel-date', name: 'busTravelDate', type: 'date' },
+                ]
+            },
+            visa: {
+                name: 'Visa Assistance',
+                fields: [] 
+            }
+        };
+
+        function displayMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const submittedMessage = document.getElementById('submitted-message');
+            submittedMessage.innerHTML = `<strong>Message sent successfully!</strong><br>Thank you, ${name}. We'll get back to you shortly.`;
+            submittedMessage.style.display = 'block';
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>AK Travel Agency</h1>
+    </div>
+
+    <div class="nav">
+        <a href="#index">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact Us</a>
+        <a href="review.html">Reviews</a>
+        <a href="travel.html">Logout</a>
+    </div>
+
+    <div id="home" class="content">
+        <h2>Welcome to AK Travel Agency</h2>
+        <p>Your perfect travel companion!</p>
+    </div>
+
+    <div id="about" class="content">
+        <h2>About Us</h2>
+        <p>We are dedicated to offering the best travel experiences for our customers.</p>
+    </div>
+
+    <div id="services" class="content">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service">
+                <img src="https://gizmodo.com/app/uploads/2024/03/324fa973d7a8ff40c8bc51c0c32d5704-1024x577.jpg" alt="Flight Booking">
+                <h3>Flight Booking</h3>
+                <p>Book your flights with us and get the best deals.</p>
+                <button onclick="showForm(services.flight)">Book Now</button>
+            </div>
+            <div class="service">
+                <img src="https://www.siteminder.com/wp-content/uploads/2023/08/vala-hero.jpg" alt="Hotel Booking">
+                <h3>Hotel Booking</h3>
+                <p>Choose from our wide range of hotels and resorts.</p>
+                <button onclick="showForm(services.hotel)">Book Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <form class="contact-form" onsubmit="displayMessage(event)">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="submitted-message" class="submitted-message"></div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 AK Travel Agency</p>
+    </div>
+</body>
+</html>

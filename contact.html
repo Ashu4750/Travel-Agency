@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+             background-image: url('https://st3.depositphotos.com/1337322/31715/i/450/depositphotos_317156376-stock-photo-contact-us-cubes-set-spotlighted.jpg');
+
+background-repeat: no-repeat;
+
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+        .nav {
+            background-color: #444;
+            padding: 10px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+        .nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .contact-section {
+            padding: 50px 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+ opacity: 0.7; /* Low opacity for the review cards */
+
+        }
+        input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+	opacity: 0.7; /* Low opacity for the review cards */
+
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .submitted-message {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0ffe0;
+            border-radius: 4px;
+            display: none; /* Hidden by default */
+        }
+    </style>
+    <script>
+        function displayMessage(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Get the form values (if needed)
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Display confirmation message
+            const submittedMessage = document.getElementById('submitted-message');
+            submittedMessage.innerHTML = `<strong>Message sent successfully!</strong><br>Thank you, ${name}. We'll get back to you shortly.`;
+            submittedMessage.style.display = 'block'; // Show the confirmation message
+            
+            // Clear the form fields
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <h1>AK Travel Agency</h1>
+</div>
+
+
+
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about3.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact us</a>
+        <a href="review.html">Review</a>
+<a href="travel.html">Logout</a>
+
+	
+    </div>
+
+    <div class="contact-section">
+        <h2>Contact Us</h2>
+        <form class="contact-form" onsubmit="displayMessage(event)">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="submitted-message" class="submitted-message"></div>
+    </div>
+    
+</body>
+</html>

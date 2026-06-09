@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations - NXT Travel Agency</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background-image:url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-72292.jpg");
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+            color:#333;
+        }
+
+        .header{
+            background:#222;
+            color:white;
+            padding:25px;
+            text-align:center;
+        }
+
+        .nav{
+            background:#444;
+            padding:12px;
+            text-align:center;
+        }
+
+        .nav a{
+            color:white;
+            text-decoration:none;
+            margin:0 15px;
+            font-weight:bold;
+        }
+
+        .nav a:hover{
+            color:#ff6347;
+        }
+
+        .destinations{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+            gap:25px;
+            padding:35px;
+        }
+
+        .destination{
+            background:white;
+            border-radius:12px;
+            overflow:hidden;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.25);
+            transition:0.3s;
+        }
+
+        .destination:hover{
+            transform:translateY(-8px);
+        }
+
+        .destination img{
+            width:100%;
+            height:210px;
+            object-fit:cover;
+            display:block;
+        }
+
+        .destination h3{
+            margin:15px 0 8px;
+            color:#222;
+        }
+
+        .destination p{
+            padding:0 15px;
+            font-size:15px;
+            min-height:75px;
+            color:#555;
+            line-height:1.5;
+        }
+
+        .book-button{
+            margin:15px 0 20px;
+            padding:10px 25px;
+            background:#ff6347;
+            color:white;
+            border:none;
+            border-radius:25px;
+            cursor:pointer;
+            font-weight:bold;
+            text-transform:uppercase;
+        }
+
+        .book-button:hover{
+            background:#ff4500;
+        }
+
+        .modal{
+            display:none;
+            position:fixed;
+            z-index:1000;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.6);
+        }
+
+        .modal-content{
+            background:white;
+            width:90%;
+            max-width:400px;
+            margin:100px auto;
+            padding:25px;
+            border-radius:12px;
+            position:relative;
+        }
+
+        .close{
+            position:absolute;
+            right:18px;
+            top:10px;
+            font-size:30px;
+            cursor:pointer;
+            color:#777;
+        }
+
+        .close:hover{
+            color:black;
+        }
+
+        label{
+            display:block;
+            margin-top:12px;
+            font-weight:bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"]{
+            width:100%;
+            padding:10px;
+            margin-top:6px;
+            border:1px solid #ccc;
+            border-radius:6px;
+            font-size:15px;
+        }
+
+        input[type="submit"],
+        input[type="reset"]{
+            margin-top:18px;
+            padding:10px 18px;
+            border:none;
+            border-radius:6px;
+            background:#ff6347;
+            color:white;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover{
+            background:#ff4500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Travel Destinations</h1>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about3.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="review.html">Review</a>
+        <a href="travel.html">Logout</a>
+    </div>
+
+    <div class="destinations">
+
+        <div class="destination">
+            <img src="https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcS02D4t6Mskqvzr2TnPzIertsrUJlO5zSYBM3aSyJbfm9poNEaiOCurYkK2q8J1HEZL" alt="Coorg">
+            <h3>Coorg</h3>
+            <p>Explore the beautiful landscapes.<br><strong>Location:</strong> Coorg District</p>
+            <button class="book-button" onclick="openModal('Coorg')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNhy49X5Ul_2r7R1U6QwaW7YLesmMNCY24QYrJr5JjaXwEqtG1Q8U95feAqaSO-JWyHoA&usqp=CAU" alt="Hampi">
+            <h3>Hampi</h3>
+            <p>Experience the vibrant culture.<br><strong>Location:</strong> Vijayanagara District</p>
+            <button class="book-button" onclick="openModal('Hampi')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/45/6c/bb/early-morning-at-the.jpg?w=1200&h=800&s=1" alt="Malpe">
+            <h3>Malpe</h3>
+            <p>Relax on the pristine beaches.<br><strong>Location:</strong> Udupi District</p>
+            <button class="book-button" onclick="openModal('Malpe')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://www.kabiniwildlifesanctuary.com/images/kabini-wildlife-sanctuary.jpg" alt="Kabini">
+            <h3>Kabini</h3>
+            <p>Enjoy wildlife safaris and serene nature.<br><strong>Location:</strong> Mysore District</p>
+            <button class="book-button" onclick="openModal('Kabini')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://karnatakatourism.org/wp-content/uploads/2020/06/Mysuru-Palace-banner-1920_1100.jpg" alt="Mysore">
+            <h3>Mysore</h3>
+            <p>Visit the majestic Mysore Palace.<br><strong>Location:</strong> Mysore District</p>
+            <button class="book-button" onclick="openModal('Mysore')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://glimpsesofindia.com/assets/uploads/destination/260920140051.jpg" alt="Gokarna">
+            <h3>Gokarna</h3>
+            <p>Discover stunning beaches.<br><strong>Location:</strong> Uttara Kannada District</p>
+            <button class="book-button" onclick="openModal('Gokarna')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://media1.thrillophilia.com/filestore/bmptgruk0jhgb9ywrvcwhehre53s_061.jpg?w=753&h=450&dpr=2.0" alt="Sakleshpur">
+            <h3>Sakleshpur</h3>
+            <p>Trek through scenic hills.<br><strong>Location:</strong> Hassan District</p>
+            <button class="book-button" onclick="openModal('Sakleshpur')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://turuhi.com/storage/story/1-Badami-Caves.jpg" alt="Badami">
+            <h3>Badami</h3>
+            <p>Explore ancient rock-cut temples.<br><strong>Location:</strong> Bagalkote District</p>
+            <button class="book-button" onclick="openModal('Badami')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://katyayanitravels.com/wp-content/uploads/2022/03/Madhwa-Sarovar-Udupi-Krishna-temple-1.jpg" alt="Kollur">
+            <h3>Kollur</h3>
+            <p>Visit the famous Mookambika Temple.<br><strong>Location:</strong> Udupi District</p>
+            <button class="book-button" onclick="openModal('Kollur')">Book Now</button>
+        </div>
+
+        <div class="destination">
+            <img src="https://media-cdn.tripadvisor.com/media/photo-s/07/79/cd/8a/nandi-hills.jpg" alt="Nandi Hills">
+            <h3>Nandi Hills</h3>
+            <p>Enjoy stunning sunrise views.<br><strong>Location:</strong> Chikkaballapur District</p>
+            <button class="book-button" onclick="openModal('Nandi Hills')">Book Now</button>
+        </div>
+
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <h3>Booking for <span id="destination-name"></span></h3>
+
+            <form id="bookingForm" onsubmit="submitBooking(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="contact_number">Contact Number:</label>
+                <input type="tel" id="contact_number" pattern="[0-9]{10}" placeholder="Enter 10 digit number" required>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal(destination){
+            document.getElementById("destination-name").innerText = destination;
+            document.getElementById("bookingModal").style.display = "block";
+        }
+
+        function closeModal(){
+            document.getElementById("bookingModal").style.display = "none";
+        }
+
+        function submitBooking(event){
+            event.preventDefault();
+
+            let destination = document.getElementById("destination-name").innerText;
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("contact_number").value;
+
+            alert(
+                "Booking Submitted Successfully!\n\n" +
+                "Destination: " + destination + "\n" +
+                "Name: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Phone: " + phone
+            );
+
+            document.getElementById("bookingForm").reset();
+            closeModal();
+        }
+
+        window.onclick = function(event){
+            let modal = document.getElementById("bookingModal");
+            if(event.target === modal){
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>

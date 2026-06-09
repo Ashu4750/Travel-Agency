@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to NXT Travel Agency</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/premium-photo/beach-with-palm-trees-blue-ocean-sunset_865967-34553.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .cta-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #ff4500;
+        }
+        .output-message {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0ffe0;
+            border-radius: 5px;
+            display: none;
+            color: #333;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 150px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AK Travel Agency</h1>
+</div>
+
+<div class="nav">
+    <a href="D:\Ashh\index.html">Home</a>
+    <a href="about3.html">About us</a>
+    <a href="D:\Ashh\services.html">Services</a>
+    <a href="D:\Ashh\contact.html">Contact</a>
+    <a href="D:\Ashh\review.html">Review</a>
+<a href="travel.html">Logout</a>
+
+</div>
+
+<div class="overlay">
+    <h1>Your Adventure Awaits with AK Travel</h1>
+    <p>Explore the world’s hidden gems with personalized experiences.</p>
+    <button class="cta-button" onclick="startJourney()">Start Your Journey</button>
+    
+    <div class="output-message" id="output-message">
+        <strong>Welcome to your journey!</strong><br>
+        Discover unique travel experiences tailored just for you!
+    </div>
+
+    <div class="image-container" id="image-container" style="display: none;">
+        <img src="C:\Users\Adrash kendrala\OneDrive\Изображения\Saved Pictures\images (5).jpeg" alt="Travel Destination 1">
+        <img src="C:\Users\Adrash kendrala\OneDrive\Изображения\Saved Pictures\images (3).jpeg" alt="Travel Destination 2">
+        <img src="C:\Users\Adrash kendrala\OneDrive\Изображения\Saved Pictures\images.jpeg" alt="Travel Destination 3">
+        <img src="C:\Users\Adrash kendrala\OneDrive\Изображения\Saved Pictures\images (1).jpeg" alt="Travel Destination 1">
+        <img src="C:\Users\Adrash kendrala\OneDrive\Изображения\Saved Pictures\images (6).jpeg" alt="Travel Destination 2">
+        <img src="C:\Users\Adrash kendrala\OneDrive\Изображения\Saved Pictures\Offers-to-Customers-For-Travel-Agencies--500x246.jpg" alt="Travel Destination 3">
+    </div>
+</div>
+
+<script>
+    function startJourney() {
+        window.location.href = 'booking.html'; // Redirect to destinations page
+    }
+</script>
+
+</body>
+</html>
